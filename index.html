@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Media Monthly Analytic</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Default Section Style */
+    .section {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      background-color: #f5f5f5;
+    }
+
+    /* Hero Section Specific */
+    .hero-section {
+      background-image: url('./images/pexels-pixabay-260922.jpg');
+      background-size: cover;
+      background-position:fixed;
+      
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.721); /* dark overlay, transparent */
+      z-index: 1;
+    }
+
+    .section-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Navigation Bar */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+    }
+
+    .right-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .circle-btn {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: #ca8300;
+      border: 2px solid #000000;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .circle-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .logo img {
+      width: 220px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Hero Title */
+    .hero-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      animation: bounceIn 1.2s ease-out forwards;
+      z-index: 5;
+    }
+
+    .hero-center h1 {
+      font-size: 3.5rem;
+      color:#ca8300;
+    }
+
+    .calligraphy {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #ffffff;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: translate(-50%, -60%) scale(0.9);
+        opacity: 0;
+      }
+      50% {
+        transform: translate(-50%, -52%) scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Down Arrow */
+    .down-arrow {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      color: #fff;
+      z-index: 5;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(10px);
+      }
+    }
+
+    /* Fade Animation */
+    .fade-scroll {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-scroll.out {
+      opacity: 0;
+      transform: translateY(-60px);
+    }
+
+    /* Section Content */
+    .content-text {
+      font-size: 2rem;
+      color: #333;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+
+
+    
+    body {
+      background-color: #000;
+      color: rgb(215, 215, 215);
+      font-family: 'Roboto', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 40px;
+      gap: 40px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .column {
+      flex: 1;
+      padding: 20px;
+      
+      border-radius: 10px;
+      animation: slideIn 1.5s ease forwards;
+    }
+
+    .column:nth-child(1) {
+      animation-delay: 0.5s;
+    }
+    .column:nth-child(2) {
+      animation-delay: 1s;
+    }
+    .column:nth-child(3) {
+      animation-delay: 1.5s;
+    }
+
+
+    .title-one {
+        text-align: center;
+        margin: 100px 0px 50px 0px;
+       
+        display: block;
+        font-family: 'Great Vibes', cursive;
+        color: gold;
+        font-size: 4rem;
+
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 20px 0;
+    }
+
+    .calligraphy {
+      font-family: 'Great Vibes', cursive;
+      color: gold;
+    }
+
+    .call{
+        font-family: 'Great Vibes', cursive;
+      color: gold;
+    }
+
+    h2, h3 {
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 15px 0;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 5px;
+      
+    }
+
+    ul li {
+      margin:0px 0px 20px 0px;
+      
+      
+    }
+
+    .image-card {
+      margin-bottom: 30px;
+      text-align: center;
+      animation: fadeIn 2s ease;
+      
+      height: 300px;
+      width: 250px;
+    }
+
+    .image-card img {
+      width: 100%;
+      height:100%;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    
+
+    .image-card span {
+      display: block;
+      margin-top: 8px;
+      color: gold;
+      font-weight: bold;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #ffffff; /* TikTok red-pink */
+    }
+
+    .dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .card {
+      
+      border-radius: 8px;
+      padding: 20px;
+      width: 400px;
+      min-height: 250px;
+    }
+
+    .progress-group {
+      margin-bottom: 20px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: white;
+    }
+
+    .progress-bar-bg {
+      background-color: #333;
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(to right, #25f4ee, #fe2c55); /* TikTok gradient */
+      transition: width 1s ease;
+    }
+
+
+
+     .timeline-container {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 20px;
+      position: relative;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 50%;
+      left: 100px;
+      right: 100px;
+      height: 4px;
+      background: gold;
+      z-index: 1;
+      transform: translateY(-50%);
+    }
+
+    .timeline {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 220px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.6s ease-in-out;
+    }
+
+    .timeline-item.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-img {
+      width: 240px;
+      height: 440px;
+      border-radius:20px;
+      border: 1px solid gold;
+      overflow: hidden;
+      background: #222;
+      margin-bottom: 15px;
+    }
+
+    .timeline-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .timeline-title {
+      font-family: "Brush Script MT", cursive;
+      font-size: 24px;
+      color: gold;
+      margin: 10px 0 5px;
+    }
+
+    .timeline-desc {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #ddd;
+    }
+
+
+    .footer{
+      margin: 0;
+      background-color: #000;
+      color: gold;
+      font-family: 'Great Vibes', cursive;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .footer h1 {
+      font-size: 5rem;
+      animation: fadeInScale 2s ease-in-out forwards;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: color 0.5s ease;
+    }
+
+     .footer h1:hover {
+      color: #ffd700;
+      letter-spacing: 2px;
+    }
+
+    @keyframes fadeInScale {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+
+
+
+    .headering {
+      text-align: center;
+      color: rgb(255, 255, 255);
+      margin-bottom: 40px;
+    }
+
+    .container-b {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-b {
+      flex: 1;
+      min-width: 300px;
+      max-width: 350px;
+    }
+
+    .section-b h2 {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 5px;
+    }
+
+    .bar-wrapper {
+      margin-bottom: 38px;
+    }
+
+    .label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .bar-container {
+      background-color: #333;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 10px;
+    }
+
+    .bar {
+      height: 100%;
+      background: linear-gradient(to right, #ff00ff, #ff66cc);
+      width: 0;
+      transition: width 1.2s ease-in-out;
+    }
+  
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="section hero-section">
+    <div class="section-content">
+      <div class="nav fade-scroll">
+        <div class="logo">
+          <img src="./images/photo_2025-06-18_08-38-48-removebg-preview.png" alt="Logo" />
+        </div>
+        <div class="right-buttons ">
+          <div class="circle-btn" onclick="alert('Button 1')"></div>
+          <div class="circle-btn" onclick="alert('Button 2')"></div>
+          <div class="circle-btn" onclick="alert('Button 3')"></div>
+        </div>
+      </div>
+
+      <div class="hero-center fade-scroll">
+        <h1><span class="calligraphy fade-scroll">Social Media</span> <br>
+           Monthly Analytics</h1>
+      </div>
+
+      <div class="down-arrow" onclick="document.getElementById('section2').scrollIntoView({behavior: 'smooth'});">↓</div>
+    </div>
+  </section>
+
+
+
+  
+    <h1 class="title-one fade-scroll" id="section2">TikTok</h1>
+
+
+  <div class="container  fade-scroll">
+
+      
+    <!-- First Column -->
+    <div class="column">
+      
+      <h1><span class="calligraphy">Summary &  <br>
+    </span> Key Findings</h1>
+      <p>We received 126K post views, 3,712 profile views, 
+        and strong engagement with 6,984 likes, 447 comments,
+         and 1,863 shares. This indicates a sharp rise in visibility
+          and interaction, driven by a few peak activity days.
+      </p>
+      <p>Total viewers reached 57K, with 55K being new viewers, 
+        showing excellent discovery and reach. The graph highlights
+         clear spikes in viewership, likely linked to high-performing 
+         or trending content.
+      </p>
+      <p>We gained 1,469 new followers, bringing your total to 1,498,
+         with a major surge around the middle of the period. Follower 
+         growth was fast and organic, likely due to viral or well-timed 
+         content.
+      </p>
+    </div>
+
+    <!-- Second Column -->
+    <div class="column">
+
+      
+
+
+      <h3 class="call">What was different this month?</h3>
+      <ul>
+        <li>Higher views (126K+), likes (6.9K), and new followers (1.4K+)</li>
+         <li>Most viewers were new (high discovery)</li>
+         <li>Clear spikes in engagement and reach</li>
+         
+      </ul>
+
+      <h3 class="call">What caused the increase?</h3>
+       <ul>
+           <li>Viral or trend-based content</li>
+           <li>Strong hooks and short, engaging videos</li>
+           <li>Posting during peak activity times</li>
+           
+      </ul>
+
+      <h3 class="call">What should we learn?</h3>
+       <ul>
+           <li>Use trends and catchy intros</li>
+           <li>Post consistently and at optimal times</li>
+           <li>Replicate successful content styles</li>
+           
+      </ul>
+    </div>
+
+   
+  </div>
+
+
+   <div class="timeline-container  fade-scroll">
+    <div class="timeline-line"></div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-img">
+          <img src="./images/tiktok-1.jpg" alt="Step 1" />
+        </div>
+        <div class="timeline-title"></div>
+        <div class="timeline-desc">Overview</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-img">
+          <img src="./images/tiktok-2.jpg" alt="Step 2" />
+        </div>
+        <div class="timeline-title"></div>
+        <div class="timeline-desc">Views</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-img">
+          <img src="./images/tiktok-3.jpg" alt="Step 3" />
+        </div>
+        <div class="timeline-title"></div>
+        <div class="timeline-desc">Followers</div>
+      </div>
+    </div>
+  </div>
+
+
+   <h1 class="headering fade-scroll">TikTok Audience Analytics</h1>
+
+   <div class="dashboard fade-scroll">
+    <!-- Age Card -->
+    <div class="card">
+      <h2>Top Age Ranges</h2>
+      <div class="progress-group">
+        <div class="progress-label"><span>18 - 24</span><span>37.0%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width: 0%"></div></div>
+      </div>
+      <div class="progress-group">
+        <div class="progress-label"><span>25 - 34</span><span>46.3%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width: 0%"></div></div>
+      </div>
+      <div class="progress-group">
+        <div class="progress-label"><span>35 - 44</span><span>12.1%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width: 0%"></div></div>
+      </div>
+      <div class="progress-group">
+        <div class="progress-label"><span>45 - 54</span><span>2.9%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width: 0%"></div></div>
+      </div>
+      <div class="progress-group">
+        <div class="progress-label"><span>55+</span><span>1.7%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width: 0%"></div></div>
+      </div>
+    </div>
+
+    <!-- Location Card -->
+    <div class="card">
+      <h2>Top Locations</h2>
+      <div class="progress-group">
+        <div class="progress-label"><span>Ethiopia</span><span>96.5%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width: 0%"></div></div>
+      </div>
+      <div class="progress-group">
+        <div class="progress-label"><span>United States</span><span>1.1%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width: 0%"></div></div>
+      </div>
+      <div class="progress-group">
+        <div class="progress-label"><span>Other</span><span>0.9%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width: 0%"></div></div>
+      </div>
+      <div class="progress-group">
+        <div class="progress-label"><span>United Kingdom</span><span>0.4%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width: 0%"></div></div>
+      </div>
+      <div class="progress-group">
+        <div class="progress-label"><span>Canada</span><span>0.2%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width: 0%"></div></div>
+      </div>
+    </div>
+  </div>
+
+
+        <h1 class="title-one fade-scroll">Instagram</h1>
+
+  
+  <div class="container  fade-scroll">
+
+    <!-- First Column -->
+    <div class="column">
+      
+      <h1><span class="calligraphy">Summary &  <br>
+    </span> Key Findings</h1>
+      <p>We had 5,239 total interactions, with 84.2% from
+         followers and 15.8% from non followers. Engagement 
+         was mainly driven by posts (52.9%) and reels (44.1%)
+         , while ads contributed 2.7%.
+      </p>
+      <p>Us gained 857 new followers, reaching a total of 2,154 a
+         66.2% increase. There was a clear spike in growth,
+          with only 54 unfollows, indicating strong audience 
+          interest.
+      </p>
+      <p>
+        Our content received 90,631 views, with 68.7% from non followers,
+         showing high reach potential. Posts and reels led performance,
+          and reach jumped by 5,155%, with 18.9% of views from ads.
+      </p>
+    </div>
+
+    <!-- Second Column -->
+    <div class="column">
+      <h3 class="call">What was different this month ?</h3>
+      <ul>
+        <li>Significant follower growth (+66.2%) compared to previous periods</li>
+         <li>A sharp spike in both views (90K+) and reach (+5,155%)</li>
+         <li>More non-followers (68.7%) discovering and engaging with your content</li>
+         <li>High interaction rates focused on posts and reels, showing effective content formats</li>
+      </ul>
+
+      <h3 class="call">What likely caused the increase ?</h3>
+       <ul>
+           <li>Posting more engaging or viral content, especially reels</li>
+           <li>Possibly using trending sounds or formats that boosted discoverability</li>
+           <li>Content may have been boosted by Instagram’s algorithm or featured on For You pages</li>
+           <li>Ads contributed slightly (18.9% of views, 2.7% of interactions), helping visibility</li>
+      </ul>
+
+      <h3 class="call">What should we learn?</h3>
+       <ul>
+           <li>Short-form, engaging content like reels and posts are key drivers</li>
+           <li>Focusing on relatable, trend-aligned videos and posting consistently can attract new audiences.</li>
+           <li>Tapping into viral moments or trends significantly boosts visibility</li>
+           
+      </ul>
+    </div>
+
+  
+      
+    </div>
+
+
+    <div class="timeline-container  fade-scroll">
+    <div class="timeline-line"></div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-img">
+          <img src="./images/instagram-3.jpg" alt="Step 1" />
+        </div>
+        <div class="timeline-title"></div>
+        <div class="timeline-desc"> Views</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-img">
+          <img src="./images/instagram-2.jpg" alt="Step 2" />
+        </div>
+        <div class="timeline-title"></div>
+        <div class="timeline-desc">Followers</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-img">
+          <img src="./images/instagram-1.jpg" alt="Step 3" />
+        </div>
+        <div class="timeline-title"></div>
+        <div class="timeline-desc">Interactions</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+   <h1 class="headering fade-scroll">Instagram Audience Analytics</h1>
+
+  <div class="container-b fade-scroll">
+    <div class="section-b" id="age-ranges">
+      <h2>Top Age Ranges</h2>
+    </div>
+
+    <div class="section-b" id="countries">
+      <h2>Top Countries</h2>
+    </div>
+
+    <div class="section-b" id="cities">
+      <h2>Top Cities</h2>
+    </div>
+  </div>
+
+
+
+
+  <section class="footer  fade-scroll">
+   <h1>Thank You</h1>
+ </section>
+
+
+ 
+
+  <script>
+    const fadeSections = document.querySelectorAll('.fade-scroll');
+
+    function handleScrollAnimations() {
+      fadeSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const isVisible = rect.top <= window.innerHeight * 0.85 && rect.bottom >= window.innerHeight * 0.15;
+
+        if (isVisible) {
+          section.classList.add('visible');
+          section.classList.remove('out');
+        } else if (rect.top < 0) {
+          section.classList.add('out');
+        } else {
+          section.classList.remove('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', handleScrollAnimations);
+    window.addEventListener('load', handleScrollAnimations);
+
+           //timeline 
+
+     const items = document.querySelectorAll('.timeline-item');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(item => {
+      observer.observe(item);
+    });
+
+
+
+     const ageRanges = [
+      { label: '25-34', value: 54.2 },
+      { label: '18-24', value: 22.3 },
+      { label: '35-44', value: 17.8 },
+      { label: '45-54', value: 3.0 }
+    ];
+
+    const countries = [
+      { label: 'Ethiopia', value: 85.3 },
+      { label: 'United States', value: 5.5 },
+      { label: 'Canada', value: 0.9 },
+      { label: 'United Arab Emirates', value: 0.9 }
+    ];
+
+    const cities = [
+      { label: 'Addis Ababa', value: 83.6 },
+      { label: 'Dubai', value: 0.6 },
+      { label: 'Adama, Shewa', value: 0.4 },
+      { label: 'Toronto', value: 0.4 }
+    ];
+
+    function renderBars(data, containerId) {
+      const container = document.getElementById(containerId);
+      data.forEach((item, index) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'bar-wrapper';
+
+        const label = document.createElement('div');
+        label.className = 'label';
+        label.innerHTML = `<span>${item.label}</span><span>${item.value}%</span>`;
+
+        const barContainer = document.createElement('div');
+        barContainer.className = 'bar-container';
+
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+
+        barContainer.appendChild(bar);
+        wrapper.appendChild(label);
+        wrapper.appendChild(barContainer);
+        container.appendChild(wrapper);
+
+        // Add a slight initial delay and staggered animation
+        setTimeout(() => {
+          bar.style.width = `${item.value}%`;
+        }, 300 + 100 * index);
+      });
+    }
+
+    renderBars(ageRanges, 'age-ranges');
+    renderBars(countries, 'countries');
+    renderBars(cities, 'cities');
+
+
+    //progress bar tiktok
+
+    // Animate all progress bars on page load
+    window.addEventListener("DOMContentLoaded", () => {
+      const bars = document.querySelectorAll(".progress-bar");
+      const values = [37.0, 46.3, 12.1, 2.9, 1.7, 96.5, 1.1, 0.9, 0.4, 0.2];
+      bars.forEach((bar, index) => {
+        setTimeout(() => {
+          bar.style.width = values[index] + "%";
+        }, 300 + index * 150);
+      });
+    });
+  </script>
+
+</body>
+</html>
